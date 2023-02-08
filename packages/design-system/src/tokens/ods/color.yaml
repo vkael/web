@@ -21,6 +21,8 @@ color:
         value: rgb(4, 30, 66)
       hover:
         value: rgb(34, 57, 89)
+      text:
+        value: "{color.text.inverse.value}"
     primary:
       default:
         value: rgb(74, 118, 172)
