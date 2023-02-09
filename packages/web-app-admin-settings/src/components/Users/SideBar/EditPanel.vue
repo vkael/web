@@ -46,7 +46,7 @@
         </div>
         <quota-select
           v-if="showQuota"
-          :key="'quota-select-' + user.id"
+          :key="'quota-select-' + userId"
           class="oc-mb-s"
           :title="$gettext('Personal quota')"
           :total-quota="editUser.drive.quota.total || 0"
@@ -152,6 +152,9 @@ export default defineComponent({
         this.roles.find((role) => role.id === this.editUser.appRoleAssignments[0].appRoleId)
           .displayName
       )
+    },
+    userId() {
+      return this.user.id
     }
   },
   watch: {

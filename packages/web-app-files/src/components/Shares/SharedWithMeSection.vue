@@ -89,7 +89,7 @@
 
 <script lang="ts">
 import ResourceTable from '../FilesList/ResourceTable.vue'
-import { computed, defineComponent, unref } from 'vue'
+import { computed, defineComponent, PropType, unref } from 'vue'
 import { debounce } from 'lodash-es'
 import { ImageDimension, ImageType } from 'web-pkg/src/constants'
 import { VisibilityObserver } from 'web-pkg/src/observer'
@@ -110,6 +110,7 @@ import { buildShareSpaceResource } from 'web-client/src/helpers'
 import { configurationManager } from 'web-pkg/src/configuration'
 import { CreateTargetRouteOptions } from '../../helpers/folderLink'
 import { createFileRouteOptions } from 'web-pkg/src/helpers/router'
+import * as ODSComponents from '@ownclouders/design-system/src/components'
 
 const visibilityObserver = new VisibilityObserver()
 
@@ -118,7 +119,9 @@ export default defineComponent({
     ResourceTable,
     ContextActions,
     ListInfo,
-    NoContentMessage
+    NoContentMessage,
+    // Remove when mixins are replaced
+    ...ODSComponents
   },
 
   mixins: [FileActions, MixinAcceptShare, MixinDeclineShare],
@@ -156,7 +159,7 @@ export default defineComponent({
       }
     },
     sortHandler: {
-      type: Function,
+      type: Function as PropType<any>,
       required: true
     },
     showMoreToggle: {

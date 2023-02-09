@@ -49,9 +49,10 @@
 <script lang="ts">
 import AppLoadingSpinner from 'web-pkg/src/components/AppLoadingSpinner.vue'
 import SideBar from 'web-pkg/src/components/sideBar/SideBar.vue'
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { eventBus, useAppDefaults } from 'web-pkg'
 import { SideBarEventTopics } from 'web-pkg/src/composables/sideBar'
+import { Panel } from 'web-pkg/src/components/sideBar'
 
 export default defineComponent({
   components: {
@@ -70,7 +71,7 @@ export default defineComponent({
     },
     sideBarAvailablePanels: {
       required: false,
-      type: Array,
+      type: Array as PropType<Panel[]>,
       default: () => []
     },
     sideBarActivePanel: {

@@ -70,6 +70,7 @@ import ContextActions from '../FilesList/ContextActions.vue'
 import SharesNavigation from './SharesNavigation.vue'
 import SidebarToggle from './SidebarToggle.vue'
 import ViewOptions from './ViewOptions.vue'
+import * as ODSComponents from '@ownclouders/design-system/src/components'
 
 export default defineComponent({
   components: {
@@ -77,7 +78,9 @@ export default defineComponent({
     ContextActions,
     SharesNavigation,
     SidebarToggle,
-    ViewOptions
+    ViewOptions,
+    // Remove when mixins are replaced
+    ...ODSComponents
   },
   mixins: [ClearSelection, EmptyTrashBin, MixinFileActions],
   props: {

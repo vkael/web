@@ -16,10 +16,15 @@ import ActionMenuItem from 'web-pkg/src/components/ContextActions/ActionMenuItem
 import FileActions from '../../../mixins/fileActions'
 import { computed, defineComponent, getCurrentInstance, inject, unref } from 'vue'
 import { Resource, SpaceResource } from 'web-client'
+import * as ODSComponents from '@ownclouders/design-system/src/components'
 
 export default defineComponent({
   name: 'FileActions',
-  components: { ActionMenuItem },
+  components: {
+    ActionMenuItem,
+    // Remove when mixins are replaced
+    ...ODSComponents
+  },
   mixins: [FileActions],
   setup() {
     const instance = getCurrentInstance().proxy as any

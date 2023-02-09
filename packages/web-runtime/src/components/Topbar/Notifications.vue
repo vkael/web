@@ -45,9 +45,7 @@
             v-else
             id="resolve-notification-button"
             size="small"
-            @click.prevent.once="
-              deleteNotification({ client: $client, notification: el.notification_id })
-            "
+            @click.prevent.once="deleteNotification({ client, notification: el.notification_id })"
           >
             Mark as read
           </oc-button>
@@ -61,8 +59,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import { eventBus } from 'web-pkg/src/services/eventBus'
 import { ShareStatus } from 'web-client/src/helpers/share'
+import { useClientService } from 'web-pkg'
 
 export default {
+  setup() {
+    const { owncloudSdk: client } = useClientService()
+    return { client }
+  },
   computed: {
     ...mapGetters(['activeNotifications', 'configuration']),
 
